@@ -5,6 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form login</title>
     <link rel="stylesheet" href="form.css" />
+    <script>
+      function validateForm() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+
+        var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (!email.match(emailRegex)) {
+          document.getElementById("error-message").textContent =
+            "Email tidak valid.";
+          return false;
+        }
+
+        if (password.length < 8) {
+          document.getElementById("error-message").textContent =
+            "Password harus minimal 8 karakter.";
+          return false;
+        }
+
+        return true;
+      }
+    </script>
   </head>
   <body>
     <div class="container-content">
@@ -39,31 +60,7 @@
       </section>
     </div>
     <!--script validasi form -->
-    <script>
-      function validateForm() {
-        // Dapatkan nilai dari input email dan password
-        var email = document.getElementById("email").value;
-        var password = document.getElementById("password").value;
 
-        // Validasi email menggunakan ekspresi reguler
-        var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if (!email.match(emailRegex)) {
-          document.getElementById("error-message").textContent =
-            "Email tidak valid.";
-          return false;
-        }
-
-        // Validasi password minimal 8 karakter
-        if (password.length < 8) {
-          document.getElementById("error-message").textContent =
-            "Password harus minimal 8 karakter.";
-          return false;
-        }
-
-        // Jika email dan password valid, lanjutkan submit form
-        return true;
-      }
-    </script>
     <!-- script validasi form end -->
   </body>
 </html>
