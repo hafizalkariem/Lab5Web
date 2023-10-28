@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form login</title>
+    <link rel="stylesheet" href="form.css" />
+  </head>
+  <body>
+    <div class="container-content">
+      <section class="form-content">
+        <form name="form" onsubmit="return validateform()" method="post">
+          <h1><span>LOGIN</span></h1>
+          <p>
+            <label for="email"></label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="email"
+              required
+            />
+          </p>
+          <p>
+            <label for="password"></label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="password"
+              required
+            />
+          </p>
+          <a href="password.com">forgot password?</a>
+          <br />
+          <input type="submit" id="submit" value="login" />
+        </form>
+        <p id="error-message"></p>
+      </section>
+    </div>
+    <!--script validasi form -->
+    <script>
+      function validateForm() {
+        // Dapatkan nilai dari input email dan password
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+
+        // Validasi email menggunakan ekspresi reguler
+        var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (!email.match(emailRegex)) {
+          document.getElementById("error-message").textContent =
+            "Email tidak valid.";
+          return false;
+        }
+
+        // Validasi password minimal 8 karakter
+        if (password.length < 8) {
+          document.getElementById("error-message").textContent =
+            "Password harus minimal 8 karakter.";
+          return false;
+        }
+
+        // Jika email dan password valid, lanjutkan submit form
+        return true;
+      }
+    </script>
+    <!-- script validasi form end -->
+  </body>
+</html>
